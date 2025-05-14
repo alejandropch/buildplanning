@@ -1,0 +1,41 @@
+<h3>Mi Perfil</h3>
+
+<div *ngIf="isEditing" class="edit-mode-label">
+  <mat-icon>edit</mat-icon> Estás editando tu perfil
+</div>
+
+<form [formGroup]="profileForm" (ngSubmit)="onSave()">
+  <div class="profile-box" [class.edit-mode]="isEditing">
+    <div class="column">
+      <label>Nombre completo</label>
+      <input [value]="profileForm.get('fullName')?.value" readonly />
+
+      <label>DNI</label>
+      <input [value]="profileForm.get('dni')?.value" readonly />
+
+      <label>Celular</label>
+      <input formControlName="phone" [readonly]="!isEditing" />
+    </div>
+
+    <div class="column">
+      <label>Edad</label>
+      <input [value]="profileForm.get('age')?.value" readonly />
+
+      <label>Correo electrónico</label>
+      <input formControlName="email" [readonly]="!isEditing" />
+
+      <label>Sexo</label>
+      <input formControlName="gender" [readonly]="!isEditing" />
+    </div>
+  </div>
+
+  <div class="save-button-container">
+    <button mat-raised-button
+            [color]="isEditing ? 'primary' : 'accent'"
+            (click)="isEditing ? onSave() : onEdit()"
+            type="button"
+            [disabled]="isEditing && !profileForm.valid">
+      {{ isEditing ? 'Guardar cambios' : 'Editar perfil' }}
+    </button>
+  </div>
+</form>

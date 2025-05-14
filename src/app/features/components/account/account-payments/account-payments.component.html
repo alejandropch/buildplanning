@@ -1,0 +1,20 @@
+<h3>Estado de pagos</h3>
+
+<div class="payments-container">
+  <mat-card *ngFor="let payment of payments" class="payment-card">
+    <mat-card-title>Pago #{{ payment.id }}</mat-card-title>
+    <mat-card-content>
+      <p><strong>Fecha:</strong> {{ payment.date }}</p>
+      <p><strong>Monto:</strong> {{ payment.amount }}</p>
+      <p>
+        <strong>Estado:</strong>
+        <span [ngClass]="{
+          'status-paid': payment.status === 'Pagado',
+          'status-pending': payment.status === 'Pendiente'
+        }">
+          {{ payment.status }}
+        </span>
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>
