@@ -1,0 +1,27 @@
+<div class="register-container">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <input formControlName="fullName" placeholder="Nombre completo" />
+    <input formControlName="email" placeholder="Correo electrónico" />
+    <input formControlName="phone" placeholder="Celular" />
+    <input formControlName="dni" placeholder="DNI" />
+    <input type="password" formControlName="password" placeholder="Contraseña" />
+    <input type="number" formControlName="age" placeholder="Edad" />
+
+    <select formControlName="gender">
+      <option value="" disabled selected>Sexo</option>
+      <option value="M">Masculino</option>
+      <option value="F">Femenino</option>
+      <option value="O">Otro</option>
+    </select>
+
+    <label class="terms">
+      <input type="checkbox" formControlName="terms" />
+      Aceptar <strong>términos y condiciones</strong>
+    </label>
+
+    <button type="submit">Crear cuenta</button>
+    <p class="login-link">
+      ¿Tiene una cuenta? <a routerLink="/login">Inicia sesión</a>
+    </p>
+  </form>
+</div>

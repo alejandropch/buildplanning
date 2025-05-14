@@ -1,0 +1,22 @@
+<div class="services-container">
+  <h3>Mis servicios realizados</h3>
+  <div class="card-list">
+    <mat-card class="service-card" *ngFor="let service of services">
+      <mat-card-header>
+        <mat-card-title>{{ service.title }}</mat-card-title>
+        <mat-card-subtitle>{{ service.date }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Estado:
+          <strong [ngClass]="{
+            'status-completed': service.status === 'Completado',
+            'status-pending': service.status === 'Pendiente'
+          }">
+            {{ service.status }}
+          </strong>
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

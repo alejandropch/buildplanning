@@ -1,16 +1,27 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {MatButtonModule} from '@angular/material/button';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatIconModule} from '@angular/material/icon';
+import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-header',
-  imports: [MatButtonModule, MatSlideToggleModule,MatIconModule, RouterModule],
+  standalone: true,
+  imports: [
+    RouterModule,
+    MatButtonModule,
+    MatSlideToggleModule,
+    MatIconModule
+  ],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  constructor(private router: Router) {}
 
+  goToAccount(): void {
+    console.log('Click Detectado');
+    this.router.navigate(['/account']);
+  }
 }
