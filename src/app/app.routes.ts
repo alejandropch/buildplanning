@@ -1,27 +1,16 @@
-// import { Routes } from '@angular/router';
-
-// export const routes: Routes = [];
+// app.routes.ts
 import { Routes } from '@angular/router';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import {HomeComponent} from './features/components/home/home.component';
+import {AccountComponent} from './features/components/account/account.component';
+import { accountRoutes } from './features/components/account/account.routes';
 
 export const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
-  },
-  {
-    path: 'login',
-    loadComponent: () =>
-      import('./shared/components/login/login.component').then(m => m.LoginComponent)
-  },
-  {
-    path: 'tasks',
-    loadComponent: () =>
-      import('./shared/components/tasks/tasks.component').then(m => m.TasksComponent)
-  },
-  {
-    path: 'task-details/:id',
-    loadComponent: () =>
-      import('./shared/components/task-details/task-details.component').then(m => m.TaskDetailsComponent)
-  }
+  { path: '', component: HomeComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  ...accountRoutes,
+  { path: '**', redirectTo: '' },
+  {path: 'account', component: AccountComponent},
 ];
