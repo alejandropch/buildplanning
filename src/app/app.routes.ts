@@ -10,9 +10,9 @@ export const routes: Routes = [
     pathMatch: 'full'
   },
   {
-  path: 'login',
-  loadComponent: () =>
-    import('./shared/components/login/login.component').then(m => m.LoginComponent)
+    path: 'login',
+    loadComponent: () =>
+      import('./shared/components/login/login.component').then(m => m.LoginComponent)
   },
   {
     path: 'tasks',
